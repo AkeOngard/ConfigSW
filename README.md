@@ -11,4 +11,6 @@ exit_enable_mode() = ออกจาก privilege mode
 exit_config_mode() = ออกจาก configuration mode  
 send_command() = ส่ง command และ return ค่า output  
 send_config_set() = ส่ง command เป็น list และ return ค่า output  
->disconnect() = ตัด SSH connection
+>disconnect() = ออก SSH connection
+
+You can 
