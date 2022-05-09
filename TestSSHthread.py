@@ -10,17 +10,23 @@ import asyncio,time
 async def configsw(ip):
     
     device['ip'] = ip
-    print(f"\nConnecting Device {ip}")
-    net_connect = ConnectHandler(**device)
-    net_connect.enable()  # Login with system-view
-    await asyncio.sleep(2)
-    print('\nStarting config IP ',ip)
-    print("Passing configuration set ")
-    ##output = net_connect.send_command('display version')                                     
-    output = net_connect.send_config_set(configset) # send command in list and return value of output
-    print("Device Conigured Done :",ip)
-    print('\n',output)
-    net_connect.disconnect()
+    print(f"\nConnecting Device {ip}") 
+    try:
+        net_connect = ConnectHandler(**device)
+        net_connect.enable()  # Login with system-view
+        await asyncio.sleep(2)
+        print('\nStarting config IP ', ip)
+        print("Passing configuration set ")
+        ##output = net_connect.send_command('display version')
+        output = net_connect.send_config_set(configset)# send command in list and return value of output
+        print("Device Conigured Done :", ip)
+        print('\n', output)
+        
+        net_connect.disconnect()
+    except:
+        print (f'Cannot connect {ip}')
+    #f = open(f'{ip}.txt','w') ## Use for save file 
+    #f.write(output)
 
 
 async def main():
@@ -32,12 +38,12 @@ async def main():
     print(listip)
     print("Script for SSH to device, Automate running...")
     #await asyncio.gather(configsw('172.18.22.34'),configsw('172.18.22.34'))
-    #await asyncio.wait(listip)  
-    await asyncio.gather(*listip)  
-        
+    #await asyncio.wait(listip)
+    await asyncio.gather(*listip)
+    
 
 if __name__ == '__main__':
-    device = {'device_type': 'huawei_telnet',
+    device = {'device_type': 'huawei_telnet', ## type: huawei == SSH
           'ip': '192.168.43.10',
           'username': 'admin',
           'password': 'P@ssw0rd',
