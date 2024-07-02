@@ -7,7 +7,7 @@ Install library from file requirement by using
 
 **py -m venv ssh** 
 
-#Activate environment
+# Activate environment
 
 **ssh\Scripts\activate**  
 
