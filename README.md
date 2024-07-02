@@ -3,10 +3,12 @@ Install library from file requirement by using
 
 **pip install -r requirments.txt**
 
-Create environment
-** py -m venv ssh ** 
-Activate environment
-** ssh\Scripts\activate **  
+# Create environment
+
+**py -m venv ssh** 
+#Activate environment
+
+**ssh\Scripts\activate**  
 
 
 ### ฟังก์ชั่นของ Netmiko เบื้องต้น  
